@@ -1,2 +1,3 @@
-# react-bolierplate
-Boiler plate for a new React component/page repo
+# react-boilerplate
+
+Boilerplate for a new React component/page repository
