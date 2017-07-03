@@ -11,7 +11,7 @@ import CommonExample from './components/react-common';
 import Constants from './constants';
 import styles from './styles.scss';
 
-const BoilerplateApp = ({ rootUri }) => (
+const App = ({ rootUri }) => (
   <Router>
     <div>
       <AppBar>
@@ -27,11 +27,11 @@ const BoilerplateApp = ({ rootUri }) => (
   </Router>
 );
 
-BoilerplateApp.propTypes = {
+App.propTypes = {
   rootUri: React.PropTypes.string,
 };
-BoilerplateApp.defaultProps = {
+App.defaultProps = {
   rootUri: '',
 };
 
-export default BoilerplateApp;
+export default App;

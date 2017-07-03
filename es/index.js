@@ -1,5 +1,6 @@
-import BoilerplateApp from './app';
+import App from './app';
+import CommonExample from './components/react-common';
 
-export default BoilerplateApp;
+export { App, CommonExample };
 
-export { BoilerplateApp };
+export default App;

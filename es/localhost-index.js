@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import BoilerplateApp from './app';
+import App from './app';
 
 render(React.createElement(
   AppContainer,
   null,
-  React.createElement(BoilerplateApp, null)
+  React.createElement(App, null)
 ), document.getElementById('root'));
 
 if (module.hot) {

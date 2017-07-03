@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import BoilerplateApp from './app';
+import App from './app';
 
 render(
   <AppContainer>
-    <BoilerplateApp />
+    <App />
   </AppContainer>,
   document.getElementById('root'),
 );

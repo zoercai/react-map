@@ -9,7 +9,7 @@ import { text } from '@storybook/addon-knobs';
 import 'react-toolbox/lib/commons.scss';
 import Button from './Button';
 import Welcome from './Welcome';
-import { BoilerplateApp } from '../src/';
+import App, { CommonExample } from '../src/';
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -30,11 +30,20 @@ storiesOf('Button', module)
   () => <Button onClick={action('clicked')}><span role="img" aria-label="image button">😀 😎 👍 💯</span></Button>,
 );
 
-storiesOf('BoilerplateApp', module)
+storiesOf('App', module)
 .addWithInfo(
-  'BoilerplateApp',
+  'App',
   <ul>
-    <li>BoilerplateApp</li>
+    <li>App</li>
   </ul>,
-  () => <BoilerplateApp />,
+  () => <App />,
+);
+
+storiesOf('CommonExample', module)
+.addWithInfo(
+  'CommonExample',
+  <ul>
+    <li>CommonExample</li>
+  </ul>,
+  () => <CommonExample />,
 );

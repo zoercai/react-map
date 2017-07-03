@@ -7,7 +7,7 @@ import CommonExample from './components/react-common';
 import Constants from './constants';
 import styles from './styles.scss';
 
-var BoilerplateApp = function BoilerplateApp(_ref) {
+var App = function App(_ref) {
   var rootUri = _ref.rootUri;
   return React.createElement(
     Router,
@@ -39,11 +39,11 @@ var BoilerplateApp = function BoilerplateApp(_ref) {
   );
 };
 
-process.env.NODE_ENV !== "production" ? BoilerplateApp.propTypes = {
+process.env.NODE_ENV !== "production" ? App.propTypes = {
   rootUri: React.PropTypes.string
 } : void 0;
-BoilerplateApp.defaultProps = {
+App.defaultProps = {
   rootUri: ''
 };
 
-export default BoilerplateApp;
+export default App;
