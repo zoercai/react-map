@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-pseudo-class-no-unknown": [true, "ignorePseudoClasses": ["global"]],
+    "indentation": 2,
+    "property-no-unknown": [true, "ignoreProperties": ["composes"]],
+  }
+}

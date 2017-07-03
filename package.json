@@ -1,0 +1,120 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.0.0",
+  "description": "react-boilerplate",
+  "private": true,
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build-react-component --no-demo --copy-files",
+    "clean": "nwb clean-module",
+    "start:storybook": "start-storybook -p 9009",
+    "start": "cross-env APP_INDEX_JS='src/localhost-index.js' react-scripts start",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "test:watch": "react-scripts test --env=jsdom",
+    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "build-storybook": "build-storybook",
+    "precommit": "lint-staged",
+    "release": "np",
+    "version": "nwb build-react-component --no-demo --copy-files && git add lib es"
+  },
+  "pre-commit": "lint:staged",
+  "lint-staged": {
+    "src/**/*.{js,jsx}": "eslint",
+    "src/**/*.{css,scss}": "stylelint",
+    "storybook/**/*.{js,jsx}": "eslint",
+    "storybook/**/*.{css,scss}": "stylelint"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 1,
+        "functions": 1,
+        "lines": 1,
+        "statements": 1
+      }
+    }
+  },
+  "dependencies": {
+    "named-js-regexp": "^1.3.2",
+    "react-common": "git+ssh://git@github.com/eroad/react-common.git#0.2.7",
+    "react-router-dom": "^4.1.1",
+    "validator": "^7.1.0"
+  },
+  "peerDependencies": {
+    "classnames": "2.x",
+    "mobx": "2.x",
+    "mobx-react": "3 || 4",
+    "moment": "2.x",
+    "prop-types": "15.x",
+    "react": "15.x",
+    "react-addons-css-transition-group": "15.x"
+  },
+  "devDependencies": {
+    "@storybook/addon-info": "^3.1.3",
+    "@storybook/addon-knobs": "^3.1.2",
+    "@storybook/react": "^3.1.3",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "chai": "^4.0.2",
+    "chai-enzyme": "^0.8.0",
+    "classnames": "^2.2.5",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "customised-react-scripts": "^0.0.24",
+    "enzyme": "^2.9.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
+    "mobx": "2.x",
+    "mobx-react": "^4.2.1",
+    "mobx-react-devtools": "^4.2.15",
+    "moment": "^2.18.1",
+    "named-js-regexp": "^1.3.2",
+    "node-sass": "^4.5.3",
+    "np": "^2.16.0",
+    "nwb": "0.15.x",
+    "postcss-cssnext": "^2.11.0",
+    "postcss-import": "8.0.2",
+    "postcss-loader": "^2.0.6",
+    "postcss-reporter": "^4.0.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.0",
+    "react-addons-css-transition-group": "^15.6.0",
+    "react-css-themr": "^2.1.2",
+    "react-dom": "^15.6.0",
+    "react-hot-loader": "3.0.0-beta.2",
+    "react-test-renderer": "^15.6.1",
+    "react-toolbox": "1.X",
+    "sass-loader": "^6.0.6",
+    "sinon": "^2.3.5",
+    "style-loader": "^0.18.2",
+    "stylelint": "^7.11.0",
+    "stylelint-config-standard": "^16.0.0"
+  },
+  "author": "",
+  "homepage": "https://github.com/eroad/react-boilerplate#readme",
+  "bugs": {
+    "url": "https://github.com/eroad/react-boilerplate/issues"
+  },
+  "license": "UNLICENCED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eroad/react-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "common",
+    "react-boilerplate",
+    "EROAD"
+  ]
+}
