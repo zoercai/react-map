@@ -39,7 +39,7 @@ Boilerplate for a new React component/page repository
 
 In the package that you wish to import the project to
 
-`yarn add git+ssh://git@github.com/tedchennz/react-boilerplate#0.0.1`
+`yarn add git+ssh://git@github.com/eroad/react-boilerplate#0.0.1`
 
 
 Then you should be able to use the component(s) in the other project:
