@@ -7,7 +7,7 @@
     "browser": true,
     "es6": true,
     "node": true,
-    "jest": true,
+    "jest": true
   },
   "extends": [
     "airbnb",
@@ -25,7 +25,7 @@
     "no-mixed-operators": [2, { "allowSamePrecedence": true }],
     "no-param-reassign": 1,
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
-    "no-restricted-syntax": [2, 'LabeledStatement', 'WithStatement'],
+    "no-restricted-syntax": [2, "LabeledStatement", "WithStatement"],
     "no-underscore-dangle": 1,
     "no-unused-expressions": 1,
     "no-unused-vars": [2, { "ignoreRestSiblings": true, "varsIgnorePattern": "[iI]gnored", "argsIgnorePattern": "^_" }],
