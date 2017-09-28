@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { Button } from 'react-toolbox/lib/button';
-import Store from '../../store';
 import API from '../../api';
 
+@inject('counterStore')
 @observer
 class CounterSave extends Component {
+
+  constructor() {
+    super();
+    this.save = this.save.bind(this);
+    this.load = this.load.bind(this);
+  }
+
   save() {
-    API.saveFile(Store.saveFile);
+    API.saveFile(this.props.counterStore.saveFile);
   }
 
   load() {
     return API.getSaveFile().then((saveFile) => {
-      Store.loadSaveFile(saveFile);
+      this.props.counterStore.loadSaveFile(saveFile);
     });
   }
+
   render() {
     const buttonStyle = {
       color: 'white',

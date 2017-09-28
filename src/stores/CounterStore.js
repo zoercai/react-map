@@ -1,11 +1,15 @@
 import { observable, computed, action } from 'mobx';
 
-class Store {
+class CounterStore {
   @observable increments = 0;
   @observable decrements = 0;
 
   @computed get count() {
     return this.increments - this.decrements;
+  }
+
+  constructor(rootStore) {
+    this.rootStore = rootStore;
   }
 
   reset() {
@@ -34,5 +38,4 @@ class Store {
   }
 }
 
-const _Store = new Store();
-export default _Store;
+export default CounterStore;
