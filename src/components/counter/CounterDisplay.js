@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { PINK, BLUE } from '../../constants';
 
 class CounterDisplay extends Component {
   static propTypes = {
-    count: React.PropTypes.number,
+    count: PropTypes.number,
   }
 
   static defaultProps = {
