@@ -4,6 +4,7 @@ const constants = {
   ROUTER: {
     HOME: '/',
     REACT_COMMON: '/react-common',
+    ANT: '/ant',
   },
 };
 

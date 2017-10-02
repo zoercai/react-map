@@ -1,7 +1,7 @@
 import React from 'react';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Counter from '../Counter';
 import CounterStore from '../../../stores/CounterStore';
@@ -15,7 +15,7 @@ describe('Counter', () => {
 
   beforeEach(() => {
     counterStore = new CounterStore();
-    wrapper = mount(<Counter counterStore={counterStore} />);
+    wrapper = shallow(<Counter.wrappedComponent counterStore={counterStore} />);
     fakes = sinon.collection;
   });
 

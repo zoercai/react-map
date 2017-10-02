@@ -57,3 +57,9 @@ Then you should be able to use the component(s) in the other project:
 `import { CommonExample } from 'react-boilerplate'`
 
 `<CommonExample />`
+
+
+
+## Customizing webpack configuration
+
+We are using https://github.com/facebookincubator/create-react-app for some managed default configurations. However, we want to use some features and libraries that would not work with a vanilla create-react-app installtion. To customize the webpack configuration, we are using https://github.com/timarney/react-app-rewired/ to 'rewire' some of the configuration for our own purposes. The downside to this is that we break any guarantees CRA provides, and we will need to manually update our rewired configuration if anything breaks.

@@ -1,23 +1,8 @@
+
 import React from 'react';
-import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import ReactDOM from 'react-dom';
 import App from './app';
+import registerServiceWorker from './registerServiceWorker';
 
-render(
-  <AppContainer>
-    <App />
-  </AppContainer>,
-  document.getElementById('root'),
-);
-
-if (module.hot) {
-  module.hot.accept('./app', () => {
-    const NextApp = require('./app').default; // eslint-disable-line global-require
-    render(
-      <AppContainer>
-        <NextApp />
-      </AppContainer>,
-      document.getElementById('root'),
-    );
-  });
-}
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();

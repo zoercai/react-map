@@ -8,7 +8,7 @@ class ExampleForm extends Form {
     super(data);
   }
 
-// Fields that will be included in this form
+  // Fields that will be included in this form
   static fields = [
     [BooleanField, { name: 'BooleanField', label: 'BooleanField in SubField', required: false }],
     [CharField, { name: 'CharField', label: 'CharField in SubField', required: false }],
