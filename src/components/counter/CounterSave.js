@@ -6,7 +6,6 @@ import API from '../../api';
 @inject('counterStore')
 @observer
 class CounterSave extends Component {
-
   constructor() {
     super();
     this.save = this.save.bind(this);
