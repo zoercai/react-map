@@ -1,6 +1,6 @@
 const rewireMobX = require('react-app-rewire-mobx');
 const { injectBabelPlugin } = require('react-app-rewired');
-const rewireEslint = require('react-app-rewire-eslint');
+const rewireEslint = require('./rewire/react-app-rewire-eslint');
 const rewirePolyfills = require('react-app-rewire-polyfills');
 const rewireLess = require('./rewire/react-app-rewire-less');
 const rewireSass = require('./rewire/react-app-rewire-sass');
