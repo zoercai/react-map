@@ -6826,6 +6826,10 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
+lodash@4.16.4:
+  version "4.16.4"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.16.4.tgz#01ce306b9bad1319f2a5528674f88297aeb70127"
+
 lodash@4.x.x, "lodash@>=3.5 <5", lodash@^4.0.0, lodash@^4.0.1, lodash@^4.1.0, lodash@^4.14.0, lodash@^4.15.0, lodash@^4.16.5, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.1, lodash@~4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
@@ -9241,6 +9245,15 @@ react-color@^2.11.4:
     prop-types "^15.5.4"
     reactcss "^1.2.0"
     tinycolor2 "^1.1.2"
+
+"react-common@git+ssh://git@github.com/eroad/react-common.git#0.2.25":
+  version "0.2.25"
+  resolved "git+ssh://git@github.com/eroad/react-common.git#abfd75a81e38cbe470d54b7f0913ae97760bfefd"
+  dependencies:
+    lodash "4.16.4"
+    named-js-regexp "^1.3.2"
+    react-toolbox "1.X"
+    validator "^7.1.0"
 
 "react-common@git+ssh://git@github.com/eroad/react-common.git#0.2.7":
   version "0.2.7"
