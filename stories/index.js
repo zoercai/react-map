@@ -9,41 +9,16 @@ import { text } from '@storybook/addon-knobs';
 import 'react-toolbox/lib/commons.scss';
 import Button from './Button';
 import Welcome from './Welcome';
-import App, { CommonExample } from '../src/';
-
+import commonStories from '../src/components/react-common/__stories__/index-stories';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
 storiesOf('Button', module)
-.addWithInfo(
-  'with text',
-  'Description here',
-  () => <Button onClick={action('clicked')}>{text('children', 'Hello Button')}</Button>,
-  { inline: true },
-)
-.addWithInfo(
-  'with some emoji',
-  <ol>
-    <li>item</li>
-    <li>item</li>
-  </ol>,
-  () => <Button onClick={action('clicked')}><span role="img" aria-label="image button">😀 😎 👍 💯</span></Button>,
-);
+  .addWithInfo(
+    'with text',
+    'Description here',
+    () => <Button onClick={action('clicked')}>{text('children', 'Hello Button')}</Button>,
+    { inline: true },
+  );
 
-storiesOf('App', module)
-.addWithInfo(
-  'App',
-  <ul>
-    <li>App</li>
-  </ul>,
-  () => <App />,
-);
-
-storiesOf('CommonExample', module)
-.addWithInfo(
-  'CommonExample',
-  <ul>
-    <li>CommonExample</li>
-  </ul>,
-  () => <CommonExample />,
-);
+commonStories();
