@@ -16,6 +16,8 @@
     "clean": "nwb clean-module",
     "start:storybook": "start-storybook -p 9009",
     "start": "cross-env APP_INDEX_JS='src/localhost-index.js' NODE_ENV=local react-app-rewired start",
+    "start:all": "yarn run dev-api-server | yarn start",
+    "dev-api-server": "node dev-api-server/server.js",
     "test": "cross-env CI=true NODE_ENV=local react-app-rewired test --env=jsdom",
     "test:watch": "react-app-rewired test --env=jsdom",
     "test:coverage": "react-app-rewired test --env=jsdom --coverage",
