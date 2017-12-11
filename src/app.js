@@ -9,6 +9,7 @@ import AppBar from 'react-toolbox/lib/app_bar';
 import Navigation from 'react-toolbox/lib/navigation';
 import { Provider } from 'mobx-react';
 import CounterStore from './stores/CounterStore';
+import CommonStore from './stores/CommonStore';
 import CounterContainer from './components/counter';
 import CommonExample from './components/react-common';
 import AntExample from './components/ant';
@@ -16,7 +17,7 @@ import Constants from './constants';
 import styles from './styles.scss';
 
 const App = ({ rootUri }) => (
-  <Provider counterStore={new CounterStore()}>
+  <Provider counterStore={new CounterStore()} commonStore={new CommonStore()}>
     <Router>
       <div>
         <AppBar>

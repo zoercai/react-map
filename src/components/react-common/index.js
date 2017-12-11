@@ -1,43 +1,41 @@
 // @flow
 import React from 'react';
-import { Button } from 'react-toolbox/lib/button';
-import { Form, BooleanField, CharField, ChoiceField } from 'react-common';
+import { observer, inject } from 'mobx-react';
+import { styles } from 'react-common';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Loading } from 'react-common/lib/components/loading';
+import { Constants } from '../../stores/CommonStore';
+import CommonExample from './CommonExample';
 
-class ExampleForm extends Form {
-  constructor(data?: Object = {}) {
-    super(data);
+@inject('commonStore') @observer class App extends React.Component {
+  componentWillMount() {
+    Promise.all([
+      this.props.commonStore.fetchPing(),
+    ]);
   }
-
-  // Fields that will be included in this form
-  static fields = [
-    [BooleanField, { name: 'BooleanField', label: 'BooleanField in SubField', required: false }],
-    [CharField, { name: 'CharField', label: 'CharField in SubField', required: false }],
-    [ChoiceField, {
-      name: 'ChoiceField',
-      label: 'ChoiceField in SubField',
-      options: ['Option 1', 'Option 2', 'Option 3'],
-      required: false,
-    }],
-  ];
-}
-
-
-export default class CommonExample extends React.Component {
   render() {
-    const form = new ExampleForm();
     return (
-      <div style={{ background: '#eeeeee' }}>
-        <Button icon="download" label="Download" accent />
-        <div>
-          <form id="form">
-            <section>
-              <div>{ form.fields.BooleanField.render() }</div>
-              <div>{ form.fields.ChoiceField.render() }</div>
-              <div>{ form.fields.CharField.render() }</div>
-            </section>
-          </form>
-        </div>
-      </div>
+      <ReactCSSTransitionGroup
+        transitionName={{
+          enter: styles['transition-enter'],
+          enterActive: styles['transition-enter-active'],
+          leave: styles['transition-leave'],
+          leaveActive: styles['transition-leave-active'],
+          appear: styles['transition-appear'],
+          appearActive: styles['transition-appear-active'],
+        }}
+        transitionAppearTimeout={500}
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={500}
+        transitionAppear
+        component="div"
+      >
+        {this.props.commonStore.state === Constants.STATE.DONE
+          ? <CommonExample key={0} />
+          : <Loading label="Loading..." key={1} />
+        }
+      </ReactCSSTransitionGroup>
     );
   }
 }
+export default App;
