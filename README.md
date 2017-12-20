@@ -23,9 +23,13 @@ Boilerplate for a new React component/page repository
 
 ### Cloning for your own repo
 
-* Copy all files to your new repo
+* Clone your own repo (eg react-example)
+* `git remote add boilerplate git@github.com:eroad/react-boilerplate.git`
+* `git pull boilerplate master`
+* Fix merge conflict
 * Replace all instances of react-boilerplate in package.json
 
+Later you should be able to pull updates from react-boilerplate.
 
 ## Importing component for use
 
