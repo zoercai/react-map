@@ -12,6 +12,7 @@
     "umd"
   ],
   "scripts": {
+    "install:all": "yarn install && cd dev-api-server && yarn install",
     "build": "nwb build-react-component --no-demo --copy-files",
     "clean": "nwb clean-module",
     "start:storybook": "start-storybook -p 9009",
