@@ -6,6 +6,8 @@ Boilerplate for a new React component/page repository
 
 ### Running on local
 
+`yarn install:all` install all dependencies for project and mock database (dev-api-server). This should only be run once when first cloning the project
+
 `yarn install` install dependencies
 
 `yarn run start` starts a localhost server for development purposes at localhost:3000
