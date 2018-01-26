@@ -29,7 +29,7 @@
     "no-underscore-dangle": 1,
     "no-unused-expressions": 1,
     "no-unused-vars": [2, { "ignoreRestSiblings": true, "varsIgnorePattern": "[iI]gnored", "argsIgnorePattern": "^_" }],
-    "react/forbid-prop-types": 1,
+    "react/forbid-prop-types": [1, { "forbid": ["any", "array"], "checkContextTypes": true, "checkChildContextTypes": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/no-multi-comp": 1,
     "react/prefer-es6-class": 1,
