@@ -1,17 +1,10 @@
-const data = require('./data.json');
+const trips = require('./lines.json');
+const events = require('./points.json');
 
-const TIMEOUT_DURATION = 500;
-
-exports.ping = ((req, res) => {
-  setTimeout(() => {
-    res.send(data.ping);
-  }, TIMEOUT_DURATION);
+exports.getTrips = ((req, res) => {
+  setTimeout(() => { res.send(trips); }, 500);
 });
 
-exports.updatePing = ((req, res) => {
-  setTimeout(() => {
-    const field = req.params.field;
-    data.ping[field] = req.body;
-    res.send(data.ping);
-  }, TIMEOUT_DURATION);
+exports.getEvents = ((req, res) => {
+  setTimeout(() => { res.send(events); }, 500);
 });

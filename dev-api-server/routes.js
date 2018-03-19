@@ -4,7 +4,7 @@ const database = require('./controllers/database');
 
 const route = express.Router();
 
-route.get('/ping', database.ping);
-route.post('/ping/:field', database.updatePing);
+route.get('/pos/trips', database.getTrips);
+route.get('/pos/events', database.getEvents);
 
 module.exports = route;

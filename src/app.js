@@ -1,47 +1,40 @@
 import React from 'react';
-import 'babel-polyfill';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import AppBar from 'react-toolbox/lib/app_bar';
-import Navigation from 'react-toolbox/lib/navigation';
-import { Provider } from 'mobx-react';
-import CounterStore from './stores/CounterStore';
-import CommonStore from './stores/CommonStore';
-import CounterContainer from './components/counter';
-import CommonExample from './components/react-common';
-import AntExample from './components/ant';
-import Constants from './constants';
-import styles from './styles.scss';
+import { observer, Provider } from 'mobx-react';
+import Store from './store';
+import Map from './components/Map';
 
-const App = ({ rootUri }) => (
-  <Provider counterStore={new CounterStore()} commonStore={new CommonStore()}>
-    <Router>
-      <div>
-        <AppBar>
-          <Navigation className={styles.nav}>
-            <Link to={`${rootUri}${Constants.ROUTER.HOME}`}>Home</Link>
-            <Link to={`${rootUri}${Constants.ROUTER.REACT_COMMON}`}>React Common Examples</Link>
-            <Link to={`${rootUri}${Constants.ROUTER.ANT}`}>Ant Examples</Link>
-          </Navigation>
-        </AppBar>
+const store = new Store();
 
-        <Route exact path={`${rootUri}${Constants.ROUTER.HOME}`} component={CounterContainer} />
-        <Route path={`${rootUri}${Constants.ROUTER.REACT_COMMON}`} component={CommonExample} />
-        <Route path={`${rootUri}${Constants.ROUTER.ANT}`} component={AntExample} />
-      </div>
-    </Router>
-  </Provider>
-);
+@observer
+class App extends React.Component {
+  constructor() {
+    super();
 
-App.propTypes = {
-  rootUri: PropTypes.string,
-};
-App.defaultProps = {
-  rootUri: '',
-};
+    this.state = {
+      loaded: false,
+      error: false,
+    };
+  }
+
+  componentWillMount() {
+    Promise.all([
+      store.getTripsAction(),
+      store.getEventsAction(),
+    ]).then(() => {
+      this.setState({ loaded: true });
+    },
+    ).catch(() => {
+      this.setState({ error: true });
+    });
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <Map />
+      </Provider>
+    );
+  }
+}
 
 export default App;

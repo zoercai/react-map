@@ -1,7 +1,7 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-machine-trips-map",
   "version": "0.0.0",
-  "description": "react-boilerplate",
+  "description": "react-machine-trips-map",
   "private": true,
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -47,8 +47,10 @@
   "dependencies": {
     "antd": "^2.12.8",
     "babel-polyfill": "6.16.0",
+    "mapbox-gl": "^0.44.1",
     "named-js-regexp": "^1.3.2",
     "react-common": "git+ssh://git@github.com/eroad/react-common.git#0.2.25",
+    "react-mapbox-gl": "^3.4.1",
     "react-router-dom": "^4.1.1",
     "validator": "^7.1.0"
   },
@@ -115,19 +117,19 @@
     "stylelint-config-standard": "^16.0.0"
   },
   "author": "",
-  "homepage": "https://github.com/eroad/react-boilerplate#readme",
+  "homepage": "https://github.com/eroad/react-machine-trips-map#readme",
   "bugs": {
-    "url": "https://github.com/eroad/react-boilerplate/issues"
+    "url": "https://github.com/eroad/react-machine-trips-map/issues"
   },
   "license": "UNLICENCED",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eroad/react-boilerplate.git"
+    "url": "git+https://github.com/eroad/react-machine-trips-map.git"
   },
   "keywords": [
     "react",
     "common",
-    "react-boilerplate",
+    "react-machine-trips-map",
     "EROAD"
   ]
 }

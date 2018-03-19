@@ -3,3 +3,4 @@
 /umd
 npm-debug.log*
 /storybook-static
+.DS_Store
