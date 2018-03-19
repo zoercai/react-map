@@ -30,20 +30,6 @@ export default class Map extends React.Component {
         data: trips,
       });
 
-      // this.map.addLayer({
-      //   id: 'linesLayer',
-      //   type: 'line',
-      //   source: 'linesLayer',
-      //   layout: {
-      //     'line-join': 'round',
-      //     'line-cap': 'round',
-      //   },
-      //   paint: {
-      //     'line-color': 'rgba(131,7,123,0.6)',
-      //     'line-width': 5,
-      //   },
-      // });
-
       //  trying to filter?
       trips.features.forEach((feature) => {
         const vehicleId = feature.properties.vehicleId;
@@ -68,20 +54,6 @@ export default class Map extends React.Component {
           this.layerIds.push(layerId);
         }
       });
-
-      // this.map.addLayer({
-      //   id: 'linesLayer2',
-      //   type: 'line',
-      //   source: 'linesLayer',
-      //   layout: {
-      //     'line-join': 'round',
-      //     'line-cap': 'round',
-      //   },
-      //   paint: {
-      //     'line-color': 'rgba(131,7,123,0.6)',
-      //     'line-width': 5,
-      //   },
-      // });
 
       // Points layer
       this.map.addSource('pointsLayer', {
@@ -145,6 +117,19 @@ export default class Map extends React.Component {
     });
   };
 
+  filterByLayerSearch = (event) => {
+    const term = event.target.value.trim().toLowerCase();
+    this.linesFiltered = true;
+    this.layerIds.forEach((layerId) => {
+      const layerIdLower = layerId.trim().toLowerCase();
+      if (layerIdLower.indexOf(term) > -1) {
+        this.map.setLayoutProperty(layerId, 'visibility', 'visible');
+      } else {
+        this.map.setLayoutProperty(layerId, 'visibility', 'none');
+      }
+    });
+  };
+
   render() {
     return (
       <div>
@@ -163,6 +148,10 @@ export default class Map extends React.Component {
           }
           className={styles.map}
         />
+
+        <div className={styles.filterInput}>
+          <input id="filter-input" type="text" name="searchFilter" placeholder="Filter by vehicleId" onChange={this.filterByLayerSearch} />
+        </div>
       </div >
     );
   }

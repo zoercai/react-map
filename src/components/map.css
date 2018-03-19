@@ -56,3 +56,24 @@ body {
 .menu span.active:hover {
   background: var(--color-red);
 }
+
+.filterInput {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  width: 180px;
+}
+
+.filterInput input {
+  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  width: 100%;
+  border: 0;
+  height: 40px;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
