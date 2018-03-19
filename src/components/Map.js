@@ -157,7 +157,6 @@ export default class Map extends React.Component {
           <span className={styles.active} onClick={() => this.filterByLayer('linesLayer-Eroad-D4')}> Eroad-D4 </span>
         </div>{
         }<div
-          // eslint-disable-next-line react/jsx-no-target-blank
           ref={(el) => {
             this.mapContainer = el;
           }
