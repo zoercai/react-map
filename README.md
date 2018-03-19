@@ -1,6 +1,6 @@
-# react-boilerplate
+# react-machine-trips-map
 
-Boilerplate for a new React component/page repository
+Map visualising machine trips
 
 ## Usage
 
@@ -21,17 +21,6 @@ Boilerplate for a new React component/page repository
 `yarn run test:watch` runs tests on changes
 
 `yarn run test:coverage` runs tests and gives coverage (coverageThresholds can be modified in package.json jest>coverageThreshold so that this command fails based on coverage thresholds)
-
-
-### Cloning for your own repo
-
-* Clone your own repo (eg react-example)
-* `git remote add boilerplate git@github.com:eroad/react-boilerplate.git`
-* `git pull boilerplate master`
-* Fix merge conflict
-* Replace all instances of react-boilerplate in package.json
-
-Later you should be able to pull updates from react-boilerplate.
 
 ## Importing component for use
 
