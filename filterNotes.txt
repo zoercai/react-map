@@ -1,0 +1,25 @@
+filter
+each selected in the same category (e.g., sensor1, sensor2) is OR
+each category is AND
+
+on load, go through the response, store:
+a list of vehicle IDs
+a list of sensor types/names(?)
+plus anything else like vehicle group
+
+user interaction process:
+load map, show everything
+select filters (I want to see all sensor1 trips) >> filters selected are added to store
+map updates
+add more filters (I want to see all sensor1 trips driven by vehicle with ID of 1234)
+map updates
+
+store:
+filteredVehicleIds = ['123', '234', 2934'];
+filteredSensorTypes = ['input1', 'input2', 'seatbelt'];
+
+function:
+for each filter in filterSelected, add filter:
+const vehicleIdsFilter = ['any', ['==', 'vehicleId', 'smiley'], ['==', 'vehicleId', 'zigzaghamilton']];
+const sensorNamesFilter = ['any', ['==', 'sensorName', 'sensor1'], ['==', 'sensorName', 'sensor2']];
+this.map.setFilter('trips', ['all', vehicleIdsFilter, sensorNamesFilter]);

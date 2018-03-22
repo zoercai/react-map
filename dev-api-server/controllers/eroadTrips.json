@@ -5,7 +5,7 @@
         "type": "Feature",
         "properties": {
           "vehicleId": "longAuckland",
-          "sensorName": "Input1"
+          "sensorName": "Input2"
         },
         "geometry": {
           "type": "LineString",
