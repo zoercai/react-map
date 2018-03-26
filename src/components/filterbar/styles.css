@@ -1,0 +1,105 @@
+@import url("react-common/lib/styles/constantsV2.css");
+
+.button {
+  color: var(--color-font-primary) !important;
+  background-color: var(--color-white) !important;
+  border-color: var(--color-blue) !important;
+  border-style: solid !important;
+  text-transform: capitalize !important;
+  width: 6rem;
+}
+
+.buttonActive {
+  color: var(--color-white) !important;
+  background-color: var(--color-blue) !important;
+  text-transform: capitalize !important;
+  width: 6rem;
+}
+
+@media screen and (max-width: 44rem) {
+  .button {
+    width: 8rem !important;
+    min-width: 8rem !important;
+  }
+
+  .buttonActive {
+    width: 8rem !important;
+    min-width: 8rem !important;
+  }
+}
+
+.border {
+  border-color: var(--color-blue) !important;
+  border-style: solid !important;
+  border-left-width: 0.2rem !important;
+  border-top-width: 0.2rem !important;
+  border-bottom-width: 0.2rem !important;
+  border-right: none !important;
+  display: inline-block;
+  border-radius: 0.3rem;
+}
+
+.buttonBorder {
+  border-right-color: var(--color-blue) !important;
+  border-right-style: solid !important;
+  border-width: 0 0.2rem 0 0 !important;
+  border-radius: unset !important;
+}
+
+.checkBox {
+  display: unset;
+}
+
+.checked {
+  background-color: var(--color-blue) !important;
+  border-color: var(--color-blue) !important;
+}
+
+.checkBoxSubContainer {
+  width: 18rem;
+  padding-bottom: 2rem;
+}
+
+.checkBoxContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttonTheme {
+  width: 12rem;
+  height: 3.2rem;
+  font-weight: 400 !important;
+}
+
+.checkBoxText {
+  padding-left: 1.8rem;
+}
+
+.check {
+  border-color: var(--color-grey-light);
+}
+
+.antdSelect {
+  width: 70rem;
+}
+
+.antdSelect > div:hover {
+  border-color: var(--color-primary-hover) !important;
+}
+
+.antdSelect > div:active {
+  border-color: var(--color-primary-active) !important;
+}
+
+.antdSelect > div {
+  border-top-style: none !important;
+  border-right-style: none !important;
+  border-left-style: none !important;
+  border-radius: 0 !important;
+}
+
+@media screen and (max-width: 42rem) {
+  .checkBoxSubContainer {
+    width: 16rem;
+  }
+}

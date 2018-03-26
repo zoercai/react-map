@@ -1,0 +1,74 @@
+@import url("react-common/lib/styles/constantsV2.css");
+
+.header {
+  width: 100%;
+}
+
+.filterHeader {
+  margin-top: 1.4rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.filterButton {
+  color: var(--color-primary) !important;
+  font-size: 1.6rem;
+  padding-left: 0.6rem;
+}
+
+.filterButton:hover {
+  color: var(--color-primary-hover) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.filterButton:active {
+  color: var(--color-primary-active) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.chipLabel {
+  cursor: pointer;
+}
+
+.chipDeleteIcon {
+  background-color: var(--color-blue-light) !important;
+}
+
+.chipDeleteIcon:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.chipDeleteIcon:active {
+  background-color: var(--color-primary-active) !important;
+}
+
+.chipDelete {
+  margin: 0 0.2rem;
+}
+
+.filterChip {
+  color: white;
+  background-color: var(--color-blue-light);
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  margin-right: 0.8rem;
+}
+
+.activeFilterChips {
+  max-height: 9rem;
+  overflow-y: auto;
+  padding-top: 1.4rem;
+  padding-bottom: 1.6rem;
+  padding-left: 0.8rem;
+}
+
+.savePreferenceDialog {
+  max-width: 50rem;
+}
+
+@media (--large-phone) {
+  .activeFilterChips {
+    max-height: none;
+    overflow-y: visible;
+  }
+}

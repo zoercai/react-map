@@ -1,7 +1,9 @@
 import React from 'react';
 import { observer, Provider } from 'mobx-react';
+import { styles } from 'react-common';
+import { Layout } from 'react-toolbox';
 import Store from './store';
-import Map from './components/Map';
+import Main from './components/main/Main';
 
 const store = new Store();
 
@@ -28,12 +30,30 @@ class App extends React.Component {
     });
   }
 
+  renderView() {
+    return !this.state.loaded ?
+      (<div id="pos-loading" className={styles.loading} key={0}>
+        <div>
+          <span>Loading your proof of service data</span>
+          <span className={styles.bar} />
+        </div>
+      </div>) :
+      (<Provider store={store}>
+        <Layout>
+          <Main />
+        </Layout>
+      </Provider>);
+  }
+
   render() {
-    return (
-      <Provider store={store}>
-        <Map />
-      </Provider>
-    );
+    return this.state.error ?
+      (<div className={styles.loading} key={1}>
+        <div>
+          <span>An error occurred while loading your proof of service data</span>
+          <span>Please try again later</span>
+        </div>
+      </div>) :
+      this.renderView();
   }
 }
 
