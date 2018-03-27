@@ -12,8 +12,9 @@
 
 .filterButton {
   color: var(--color-primary) !important;
+  background-color: var(--color-grey-lightest) !important;
   font-size: 1.6rem;
-  padding-left: 0.6rem;
+  margin-left: 2rem;
 }
 
 .filterButton:hover {
@@ -31,15 +32,15 @@
 }
 
 .chipDeleteIcon {
-  background-color: var(--color-blue-light) !important;
+  background-color: var(--color-red) !important;
 }
 
 .chipDeleteIcon:hover {
-  background-color: var(--color-primary-hover) !important;
+  background-color: var(--color-red) !important;
 }
 
 .chipDeleteIcon:active {
-  background-color: var(--color-primary-active) !important;
+  background-color: var(---color-red) !important;
 }
 
 .chipDelete {
@@ -48,27 +49,21 @@
 
 .filterChip {
   color: white;
-  background-color: var(--color-blue-light);
+  background-color: var(--color-red);
   font-size: 1.2rem;
   line-height: 2.4rem;
   margin-right: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .activeFilterChips {
-  max-height: 9rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding-top: 1.4rem;
   padding-bottom: 1.6rem;
-  padding-left: 0.8rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 .savePreferenceDialog {
   max-width: 50rem;
-}
-
-@media (--large-phone) {
-  .activeFilterChips {
-    max-height: none;
-    overflow-y: visible;
-  }
 }

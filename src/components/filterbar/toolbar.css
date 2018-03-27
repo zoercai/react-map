@@ -91,7 +91,6 @@
 
 .filterDialogContainer {
   overflow-y: auto;
-  height: 40vh;
 }
 
 .clearButton {
@@ -118,21 +117,8 @@
   top: 10.5rem !important;
 }
 
-@media screen and (max-width: 830px) {
-  .drawer > aside {
-    width: 100% !important;
-  }
-}
-
-@media screen and (min-width: 831px) {
-  .drawer > aside {
-    width: 72rem !important;
-  }
-}
-
 .drawer > aside {
   z-index: 1000 !important;
-  top: 18.4rem !important;
   background-color: var(--color-white) !important;
   max-width: none !important;
 }
@@ -157,24 +143,6 @@
   top: 10.5rem !important;
   background-color: transparent !important;
   transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 10ms linear 0.35s !important;
-}
-
-@media screen and (min-height: 835px) {
-  .filterDialogContainerMobile > div > div {
-    height: 100%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .filterDialogContainerMobile > div {
-    height: calc(100vh - 17rem);
-  }
-}
-
-@media screen and (max-width: 415px) {
-  .filterDialogContainerMobile > div {
-    height: calc(100vh - 19rem);
-  }
 }
 
 .filterDialogContainer > div {
@@ -353,16 +321,6 @@
   border-color: var(--color-primary-active) !important;
 }
 
-@media screen and (max-width: 330px) {
-  .apply {
-    width: 12.5rem !important;
-  }
-
-  .saveAsDefault {
-    width: 12.5rem !important;
-  }
-}
-
 .scrollable {
   overflow-y: auto;
   position: absolute;
@@ -416,12 +374,13 @@
 }
 
 .drawer {
+  width: auto !important;
   left: 11rem !important;
 }
 
 .drawer > div {
   z-index: 999 !important;
-  top: 18.4rem !important;
+  width: auto !important;
 }
 
 .overlay {
@@ -432,16 +391,8 @@
   background-color: rgba(255, 255, 255, 0.85) !important;
 }
 
-@media screen and (max-width: 830px) {
-  .drawer > aside {
-    width: 100% !important;
-  }
-}
-
-@media screen and (min-width: 831px) {
-  .drawer > aside {
-    width: 72rem !important;
-  }
+.drawer > aside {
+  width: 72rem !important;
 }
 
 .icon {

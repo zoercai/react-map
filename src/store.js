@@ -1,8 +1,8 @@
 import { observable, action } from 'mobx';
+import _ from 'lodash';
 import API from './api';
 
 class Store {
-  // @observable layersVisibility = [];
   @observable loadingTrips = false;
   @observable trips = {};
   @observable loadingEvents = false;
@@ -11,9 +11,11 @@ class Store {
   @observable filterOptions = {
     sensorsFilterOptions: [],
     vehicleNameFilterOptions: [],
-    groupNameFilterOptions: [],
   };
-  @observable activeFilters = {};
+  @observable activeFilters = {
+    sensorsFilterOptions: [],
+    vehicleNameFilterOptions: [],
+  };
 
   @action getTripsAction = () => {
     this.loadingTrips = true;
@@ -80,12 +82,25 @@ class Store {
     return this.filterOptions.vehicleNameFilterOptions;
   }
 
-  getGroupNameFilterOptions() {
-    return this.filterOptions.groupNameFilterOptions;
+  getActiveFilters() {
+    return this.filterOptions.activeFilters;
   }
 
   @action setActiveFilters = (payload) => {
     this.activeFilters = payload;
+  }
+
+  @action removeActiveFilter(id, type) {
+    _.remove(this.activeFilters[type], activeFilterId => activeFilterId === id);
+  }
+
+  getFilterDisplayName(optionType, id) {
+    for (let i = 0; i < this.filterOptions[optionType].length; i += 1) {
+      if (id.toString() === this.filterOptions[optionType][i].toString()) {
+        return this.filterOptions[optionType][i];
+      }
+    }
+    return null;
   }
 }
 

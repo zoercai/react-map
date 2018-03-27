@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import styles from './toolbar.css';
 // import posStyles from '../../styles.scss';
 import FilterData from './FilterData';
-// import tripIcon from '../../img/tripIcon.png';
+import tripIcon from './tripIcon.png';
 
 @inject('store') @observer
 class FilterDialogue extends React.Component {
@@ -38,9 +38,8 @@ class FilterDialogue extends React.Component {
 
   apply = (form) => {
     this.props.store.setActiveFilters({
-      sensors: form.fields.sensors.value,
-      vehicleIds: form.fields.vehicleIds.value,
-      groupIds: form.fields.groupIds.value,
+      sensorName: form.fields.sensorName.value,
+      vehicleId: form.fields.vehicleId.value,
     });
     this.props.store.closeFilterDialog();
   }
@@ -73,19 +72,19 @@ class FilterDialogue extends React.Component {
             </div>
 
             <div className={cn(styles.topHeaderContainer, styles.headerContainer)}>
+              <img className={styles.icon} src={tripIcon} alt="tripIcon" />
               <p className={styles.header}>Trip</p>
             </div>
             <div className={cn(styles.container, styles.sensor)}>
               <p className={styles.subHeader}>Sensor</p>
-              <div>{ form.fields.sensors.render() }</div>
+              <div>{ form.fields.sensorName.render() }</div>
             </div>
             <div className={styles.headerContainer}>
               <FontIcon value="settings" className={styles.fontIcon} />
               <p className={cn(styles.header, styles.vehicleHeader)}>Vehicle</p>
             </div>
             <div className={styles.container}>
-              <div className={cn(styles.subContainer, dropDownStyle)}>{ form.fields.vehicleIds.render() }</div>
-              <div className={cn(styles.subContainer, dropDownStyle)}>{ form.fields.groupIds.render() }</div>
+              <div className={cn(styles.subContainer, dropDownStyle)}>{ form.fields.vehicleId.render() }</div>
             </div>
             <div className={styles.actionButtons}>
               <Button label="Apply Filters" className={cn(styles.button, styles.rightButton, styles.apply)} id="applyFilterDialogButton" onClick={() => this.apply(form)} />

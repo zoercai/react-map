@@ -273,15 +273,8 @@ export class GroupedMultipleChoiceAntdField extends Field {
     extendObservable(this, { $options: options });
   }
 
-  initializeValue(data: Object) {
-    let v = [];
-    if (data.machineIds !== null && data.machineIds !== undefined) {
-      if (data.groupIds !== null && data.groupIds !== undefined) {
-        v = data.machineIds.concat(data.groupIds);
-      } else {
-        v = data.machineIds.concat(data.fleetIds);
-      }
-    }
+  initializeValue() {
+    const v = [];
     let $value = this.normalize(v);
     if ((this.isEmpty(v) || this.isEmpty($value)) && this.initial) {
       $value = this.normalize(this.initial);
