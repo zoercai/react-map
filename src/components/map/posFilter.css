@@ -1,0 +1,69 @@
+@import url("react-common/lib/styles/constantsV2.css");
+
+.header {
+  width: 100%;
+}
+
+.filterHeader {
+  margin-top: 1.4rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+.filterButton {
+  color: var(--color-primary) !important;
+  background-color: var(--color-grey-lightest) !important;
+  font-size: 1.6rem;
+  margin-left: 2rem;
+}
+
+.filterButton:hover {
+  color: var(--color-primary-hover) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.filterButton:active {
+  color: var(--color-primary-active) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.chipLabel {
+  cursor: pointer;
+}
+
+.chipDeleteIcon {
+  background-color: var(--color-red) !important;
+}
+
+.chipDeleteIcon:hover {
+  background-color: var(--color-red) !important;
+}
+
+.chipDeleteIcon:active {
+  background-color: var(---color-red) !important;
+}
+
+.chipDelete {
+  margin: 0 0.2rem;
+}
+
+.filterChip {
+  color: white;
+  background-color: var(--color-red);
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.activeFilterChips {
+  overflow-y: scroll;
+  padding-top: 1.4rem;
+  padding-bottom: 1.6rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.savePreferenceDialog {
+  max-width: 50rem;
+}

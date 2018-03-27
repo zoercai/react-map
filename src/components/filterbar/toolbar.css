@@ -1,0 +1,402 @@
+@import url("react-common/lib/styles/constantsV2.css");
+
+.filterHeader {
+  margin-top: 0.6rem;
+  margin-left: -0.8rem;
+}
+
+.filterHeaderText {
+  height: 3.6rem;
+  line-height: 3.6rem;
+  float: left;
+  text-align: center;
+  padding-right: 1rem;
+}
+
+.chipDeleteIcon {
+  background-color: var(--color-blue-light) !important;
+}
+
+.chipDeleteIcon:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.chipDeleteIcon:active {
+  background-color: var(--color-primary-active) !important;
+}
+
+.chipDelete {
+  margin: 0 0.2rem;
+}
+
+.healthFilterChip {
+  color: white;
+  background-color: var(--color-blue-light);
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  margin-right: 0.8rem;
+}
+
+.chipLabel {
+  cursor: pointer;
+}
+
+.activeFilterChips {
+  max-height: 7rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+  line-height: 1.8rem;
+}
+
+.savePreferenceDialog {
+  max-width: 50rem;
+}
+
+.filterButton {
+  color: var(--color-primary) !important;
+  font-size: 1.6rem;
+  padding-left: 0.6rem;
+}
+
+.filterButton:hover {
+  color: var(--color-primary-hover) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.filterButton:active {
+  color: var(--color-primary-active) !important;
+  background-color: var(--color-grey-lightest) !important;
+}
+
+.item {
+  min-width: 5rem;
+}
+
+.item i {
+  line-height: 6.4rem;
+  color: var(--color-primary);
+}
+
+.item i:hover {
+  color: var(--color-primary-lighter);
+}
+
+.item h1 {
+  font-weight: 400;
+  line-height: 6.4rem;
+  margin: 0;
+}
+
+.filterDialogContainer {
+  overflow-y: auto;
+}
+
+.clearButton {
+  float: left;
+}
+
+.filterDialog {
+  min-width: 50vw;
+}
+
+@media screen and (max-width: 1024px) {
+  .filterDialog {
+    min-width: 70vw;
+  }
+}
+
+.drawer {
+  left: 11rem !important;
+  height: 0 !important;
+}
+
+.drawer > div {
+  z-index: 999 !important;
+  top: 10.5rem !important;
+}
+
+.drawer > aside {
+  z-index: 1000 !important;
+  background-color: var(--color-white) !important;
+  max-width: none !important;
+}
+
+.drawerMobile {
+  left: 11rem !important;
+  height: unset !important;
+}
+
+.drawerMobile > aside {
+  z-index: 1000 !important;
+  width: 100% !important;
+  top: 0 !important;
+  position: fixed !important;
+  margin-top: 6.4rem !important;
+  background-color: var(--color-white) !important;
+  max-width: none !important;
+}
+
+.drawerMobile > div {
+  z-index: 299 !important;
+  top: 10.5rem !important;
+  background-color: transparent !important;
+  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 10ms linear 0.35s !important;
+}
+
+.filterDialogContainer > div {
+  overflow: auto;
+  overflow-x: hidden;
+  max-height: 64vh;
+  max-width: 100rem;
+  box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.5);
+}
+
+.dropDownMobile > div {
+  width: 80vw;
+}
+
+.dropDown > div {
+  width: 100%;
+  max-width: 64rem;
+}
+
+.filterHeaderContainer {
+  border-bottom-style: solid;
+  border-bottom-width: 0.1rem;
+  border-color: var(--color-grey-lighter);
+  padding: 2rem;
+}
+
+.actionButtons {
+  width: 100%;
+  background-color: var(--color-white);
+  border-top-style: solid;
+  border-top-width: 0.1rem;
+  border-color: var(--color-grey-lighter);
+  margin-top: auto;
+  padding-bottom: 7.2rem;
+}
+
+.clearButton {
+  float: left;
+}
+
+.fontIcon {
+  font-size: 1.6rem;
+  padding-right: 1.6rem;
+  padding-bottom: 2rem;
+  color: var(--color-font-primary);
+  margin: auto 0;
+}
+
+.driverIcon {
+  font-size: 1.8rem;
+  padding-right: 1.5rem;
+}
+
+.header {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-font-primary);
+}
+
+.vehicleHeader {
+  padding-bottom: 2rem;
+}
+
+.topHeaderContainer {
+  padding-top: 2.4rem;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1.6rem;
+  padding-left: 2rem;
+  min-height: 2.4rem;
+}
+
+.subHeader {
+  font-size: 1.6rem;
+  padding-bottom: 2rem;
+  color: var(--color-font-primary);
+}
+
+.status > div > div > div {
+  padding-bottom: 3rem;
+}
+
+.button {
+  color: var(--color-primary) !important;
+}
+
+.container {
+  padding-left: 5.4rem;
+  padding-bottom: 1.2rem;
+  max-width: 100rem;
+}
+
+.container > div > div {
+  font-size: 1.6rem;
+}
+
+.subContainer {
+  padding-bottom: 6.4rem;
+}
+
+.subContainer > div > div > div > ul > li:not(:last-child) {
+  background-color: var(--color-blue-light) !important;
+  color: var(--color-white) !important;
+  border-radius: 3.2rem !important;
+  font-size: 1.2rem !important;
+}
+
+.subContainer > div > div > div > ul > li:not(:last-child) > span {
+  color: var(--color-white) !important;
+}
+
+.subContainer > div > div {
+  box-shadow: none !important;
+}
+
+.subContainer > div > div:active {
+  box-shadow: none !important;
+}
+
+.subContainer > div > div:focus {
+  box-shadow: none !important;
+}
+
+.closeButton {
+  float: right;
+}
+
+.rightButton {
+  float: right;
+}
+
+.apply {
+  color: var(--color-white) !important;
+  text-transform: capitalize !important;
+  background-color: var(--color-primary);
+  font-size: 1.4rem !important;
+  width: 13.5rem;
+  height: 4.09rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.apply:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.apply:active {
+  background-color: var(--color-primary-active) !important;
+}
+
+.saveAsDefault {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  color: var(--color-primary) !important;
+  font-size: 1.4rem !important;
+  width: 13.5rem;
+  border: 0.2rem solid var(--color-primary) !important;
+  height: 4.1rem !important;
+  text-transform: capitalize !important;
+}
+
+.saveAsDefault:hover {
+  border-width: 0.3rem !important;
+  background-color: var(--color-white) !important;
+  border-color: var(--color-primary-hover) !important;
+}
+
+.saveAsDefault:active {
+  border-color: var(--color-primary-active) !important;
+}
+
+.scrollable {
+  overflow-y: auto;
+  position: absolute;
+  top: 0.5rem;
+  bottom: 11rem;
+  right: 0;
+  left: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.scrollableMobile {
+  overflow-y: auto;
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0;
+  margin-bottom: 6.4rem;
+  right: 0;
+  left: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterDialogContainer {
+  max-width: 100rem;
+  top: 18rem !important;
+}
+
+.filterTitle {
+  font-size: 2rem;
+  font-weight: 500;
+  display: inline-block;
+  line-height: 3.2rem;
+}
+
+.clearAll {
+  font-size: 1.6rem;
+  float: right;
+}
+
+.clearAll:hover {
+  color: var(--color-primary-hover) !important;
+  background-color: var(--color-white) !important;
+}
+
+.clearAll:active {
+  color: var(--color-primary-active) !important;
+  background-color: var(--color-white) !important;
+}
+
+.drawer {
+  width: auto !important;
+  left: 11rem !important;
+}
+
+.drawer > div {
+  z-index: 999 !important;
+  width: auto !important;
+}
+
+.overlay {
+  background-color: rgba(255, 255, 255, 0) !important;
+}
+
+.overlayActive {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.drawer > aside {
+  width: 72rem !important;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1.4rem;
+}

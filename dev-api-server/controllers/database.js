@@ -1,4 +1,4 @@
-const trips = require('./lines.json');
+const trips = require('./eroadTrips.json');
 const events = require('./points.json');
 
 exports.getTrips = ((req, res) => {
