@@ -157,21 +157,35 @@ export default class Map extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div>
-        <div
-          ref={(el) => {
-            this.mapContainer = el;
-          }
-          }
-          className={styles.map}
-        />
+   toggleOtherLayers = (layer) => {
+     this.linesFiltered = true;
+     this.mapLayers.forEach((layerId) => {
+       if (layerId.indexOf(layer) <= -1 && this.map.getLayoutProperty(layerId, 'visibility') === 'visible') {
+         this.map.setLayoutProperty(layerId, 'visibility', 'none');
+       } else if (layerId.indexOf(layer) <= -1 && this.map.getLayoutProperty(layerId, 'visibility') === 'none') {
+         this.map.setLayoutProperty(layerId, 'visibility', 'visible');
+       }
+     });
+   };
 
-        <div className={styles.filterContainer}>
-          <PosFilter setFilters={this.applyFilters} />
-        </div>
-      </div >
-    );
-  }
+   render() {
+     return (
+       <div>
+         <div className={styles.menu}>
+           <span className={styles.active} onClick={() => this.toggleOtherLayers('trips')}> Points </span>
+         </div>
+         <div
+           ref={(el) => {
+             this.mapContainer = el;
+           }
+           }
+           className={styles.map}
+         />
+
+         <div className={styles.filterContainer}>
+           <PosFilter setFilters={this.applyFilters} />
+         </div>
+       </div >
+     );
+   }
 }
