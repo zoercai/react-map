@@ -3,7 +3,8 @@ const env = window.location.hostname === 'localhost' ? 'local' : 'depot';
 const constants = {
   API_URI: '/Portal',
   TRIPS_API: '/pos/trips',
-  EVENTS_API: '/pos/events',
+  ON_POINTS_API: '/pos/onPoints',
+  OFF_POINTS_API: '/pos/offPoints',
 };
 
 if (env === 'local') {

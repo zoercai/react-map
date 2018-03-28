@@ -13,8 +13,19 @@ export default {
     });
   },
 
-  getEvents() {
-    return fetch(`${Constants.API_URI}${Constants.EVENTS_API}`,
+  getOnPoints() {
+    return fetch(`${Constants.API_URI}${Constants.ON_POINTS_API}`,
+      CommonConstants.GET_JSON_FETCH_CONFIG,
+    ).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+      return response.json();
+    });
+  },
+
+  getOffPoints() {
+    return fetch(`${Constants.API_URI}${Constants.OFF_POINTS_API}`,
       CommonConstants.GET_JSON_FETCH_CONFIG,
     ).then((response) => {
       if (!response.ok) {

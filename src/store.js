@@ -4,6 +4,8 @@ import API from './api';
 
 class Store {
   @observable loadingTrips = false;
+  @observable onPoints = {};
+  @observable offPoints = {};
   @observable trips = {};
   @observable loadingEvents = false;
   @observable events = {};
@@ -16,6 +18,24 @@ class Store {
     sensorsFilterOptions: [],
     vehicleNameFilterOptions: [],
   };
+
+  @action getOnPointsAction = () => {
+    this.loadingTrips = true;
+    return API.getOnPoints().then((payload) => {
+      this.onPoints = payload;
+      this.loadingTrips = false;
+      return payload;
+    });
+  }
+
+  @action getOffPointsAction = () => {
+    this.loadingTrips = true;
+    return API.getOffPoints().then((payload) => {
+      this.offPoints = payload;
+      this.loadingTrips = false;
+      return payload;
+    });
+  }
 
   @action getTripsAction = () => {
     this.loadingTrips = true;
@@ -41,15 +61,6 @@ class Store {
       this.setVehicleFilterOptions(Array.from(vehicleOptions));
 
       this.loadingTrips = false;
-      return payload;
-    });
-  }
-
-  @action getEventsAction = () => {
-    this.loadingEvents = true;
-    return API.getEvents().then((payload) => {
-      this.events = payload;
-      this.loadingEvents = false;
       return payload;
     });
   }

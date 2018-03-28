@@ -21,7 +21,8 @@ class App extends React.Component {
   componentWillMount() {
     Promise.all([
       store.getTripsAction(),
-      store.getEventsAction(),
+      store.getOnPointsAction(),
+      store.getOffPointsAction(),
     ]).then(() => {
       this.setState({ loaded: true });
     },
