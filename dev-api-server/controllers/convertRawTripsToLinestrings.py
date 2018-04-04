@@ -4,7 +4,7 @@ import sys
 
 csv.field_size_limit(sys.maxsize)
 
-output = open("eroadTrips.json","w+")
+output = open("all.json","w+")
 
 output.write("""
 {
@@ -12,7 +12,7 @@ output.write("""
     "features": [
 """)
 
-with open('rawEroadData.csv', newline='') as f:
+with open('all.csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         # print("new row!")
@@ -24,6 +24,8 @@ with open('rawEroadData.csv', newline='') as f:
         journey = row[2][len("LINESTRING("):-len(")")].split(',')
         for journeyPoint in journey:
             journeyPointCoord = journeyPoint.split(' ')
+            if (len(journeyPointCoord) != 2):
+                continue
             coordinates += """[%s,%s], """ % (journeyPointCoord[0], journeyPointCoord[1])
 
         endCoords = row[3][len("POINT("):-len(")")].split(' ')

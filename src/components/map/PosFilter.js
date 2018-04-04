@@ -14,7 +14,7 @@ import styles from './posFilter.css';
 
   generateFilter(filterType, optionType) {
     return _.map(this.props.store.activeFilters[filterType], id => (
-      ({ label: this.props.store.getFilterDisplayName(optionType, id), id, type: filterType, key: `${filterType}${id}` })
+      ({ label: id, id, type: filterType, key: `${filterType}${id}` })
     ));
   }
 

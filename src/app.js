@@ -20,9 +20,8 @@ class App extends React.Component {
 
   componentWillMount() {
     Promise.all([
-      store.getTripsAction(),
-      store.getOnPointsAction(),
-      store.getOffPointsAction(),
+      store.getSensorFiltersAction(),
+      store.getVehicleFiltersAction(),
     ]).then(() => {
       this.setState({ loaded: true });
     },

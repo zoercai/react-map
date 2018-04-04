@@ -4,7 +4,7 @@ import sys
 
 csv.field_size_limit(sys.maxsize)
 
-output = open("eroadOffPoints.json","w+")
+output = open("eroadOffPoints2.json","w+")
 
 output.write("""
 {
@@ -12,7 +12,7 @@ output.write("""
     "features": [
 """)
 
-with open('rawEroadOffPoints.csv', newline='') as f:
+with open('rawEroadOffPoints2.csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         vehicleId = row[0]
