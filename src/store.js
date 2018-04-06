@@ -1,12 +1,8 @@
-import { observable, action } from 'mobx';
+import { observable, action, toJS } from 'mobx';
 import _ from 'lodash';
 import API from './api';
 
 class Store {
-  @observable loadingTrips = false;
-  @observable trips = {};
-  @observable loadingEvents = false;
-  @observable events = {};
   @observable filterDialogActive = false;
   @observable filterOptions = {
     sensorsFilterOptions: [],
@@ -17,6 +13,55 @@ class Store {
     vehicleNameFilterOptions: [],
   };
 
+  // Sensor filter options
+  getSensorFiltersAction = () => API.getSensorFilters().then((payload) => {
+    this.setSensorFilterOptions(payload);
+    return payload;
+  })
+
+  @action setSensorFilterOptions = (payload) => {
+    this.filterOptions.sensorFilterOptions = payload
+      .map(sensor => this.formatSensorFilters(sensor));
+    this.filterOptions.sensorFilterOptions = _.sortBy(this.filterOptions.sensorFilterOptions, 'label');
+  }
+
+  formatSensorFilters = function formatSensorFilters(sensor) {
+    return {
+      label: sensor.sensor_name.trim(),
+      value: sensor.sensor_name.trim(),
+      type: 'Sensor',
+    };
+  }
+
+  getSensorsFilterOptions() {
+    return this.filterOptions.sensorFilterOptions;
+  }
+
+  // Vehicle filter options
+  getVehicleFiltersAction = () => API.getVehicleFilters().then((payload) => {
+    this.setVehicleFilterOptions(payload);
+    return payload;
+  })
+
+  @action setVehicleFilterOptions = (payload) => {
+    this.filterOptions.vehicleNameFilterOptions = payload
+      .map(vehicle => this.formatVehicleFilters(vehicle));
+    this.filterOptions.vehicleNameFilterOptions = _.sortBy(this.filterOptions.vehicleNameFilterOptions, 'label');
+  }
+
+  formatVehicleFilters = function formatVehicleFilters(vehicle) {
+    return {
+      label: vehicle.machine_id.trim(),
+      value: vehicle.machine_id.trim(),
+      type: 'Vehicle Name',
+    };
+  }
+
+  getVehicleNameFilterOptions() {
+    return this.filterOptions.vehicleNameFilterOptions;
+  }
+
+  // Filter Dialog
   @action openFilterDialog = () => {
     this.filterDialogActive = true;
   }
@@ -29,51 +74,9 @@ class Store {
     return this.filterDialogActive;
   }
 
-  getSensorsFilterOptions() {
-    return this.filterOptions.sensorFilterOptions;
-  }
-
-  getSensorFiltersAction = () => API.getSensorFilters().then((payload) => {
-    this.setSensorFilterOptions(payload);
-    return payload;
-  })
-
-  @action setSensorFilterOptions = (payload) => {
-    this.filterOptions.sensorFilterOptions = payload
-      .map(sensor => this.formatSensorFilters(sensor));
-  }
-
-  formatSensorFilters = function formatSensorFilters(sensor) {
-    return {
-      label: sensor.sensor_name.trim(),
-      value: sensor.sensor_name.trim(),
-      type: 'Sensor',
-    };
-  }
-
-  getVehicleNameFilterOptions() {
-    return this.filterOptions.vehicleNameFilterOptions;
-  }
-
-  getVehicleFiltersAction = () => API.getVehicleFilters().then((payload) => {
-    this.setVehicleFilterOptions(payload);
-    return payload;
-  })
-
-  @action setVehicleFilterOptions = (payload) => {
-    this.filterOptions.vehicleNameFilterOptions = payload
-      .map(vehicle => this.formatVehicleFilters(vehicle));
-  }
-
-  formatVehicleFilters = function formatVehicleFilters(vehicle) {
-    return {
-      label: vehicle.machine_id.trim(),
-      value: vehicle.machine_id.trim(),
-    };
-  }
-
+  // Active filters
   getActiveFilters() {
-    return this.filterOptions.activeFilters;
+    return toJS(this.activeFilters);
   }
 
   @action setActiveFilters = (payload) => {
@@ -83,15 +86,6 @@ class Store {
   @action removeActiveFilter(id, type) {
     _.remove(this.activeFilters[type], activeFilterId => activeFilterId === id);
   }
-
-  // getFilterDisplayName(optionType, id) {
-  //   for (let i = 0; i < this.filterOptions[optionType].length; i += 1) {
-  //     if (id.toString() === this.filterOptions[optionType][i].toString()) {
-  //       return this.filterOptions[optionType][i];
-  //     }
-  //   }
-  //   return null;
-  // }
 }
 
 export default Store;

@@ -1,5 +1,8 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+import { toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import styles from './map.css';
 import PosFilter from './PosFilter';
@@ -9,10 +12,14 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoiem9lcmNhaSIsImEiOiJjamR0ZGs2OGcxNGFmMndwa2Nqe
 
 @inject('store') @observer
 export default class Map extends React.Component {
+  static propTypes = {
+    store: PropTypes.object.isRequired,
+  }
+
   componentDidMount() {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/mapbox/satellite-v9',
       center: [174.7633, -36.8485],
       zoom: 10,
     });
@@ -31,8 +38,8 @@ export default class Map extends React.Component {
           'line-cap': 'round',
         },
         paint: {
-          'line-color': 'rgba(238,49,36,0.3)',
-          'line-width': 5,
+          'line-color': 'rgba(251, 188, 5 ,0.3)',
+          'line-width': 1,
         },
       });
 
@@ -41,21 +48,24 @@ export default class Map extends React.Component {
   }
 
   mapLayers = [];
-  popupLayers = [];
 
-  applyFilters = (activeFilters) => {
-    if (this.map != null && activeFilters.length === 0) {
+  applyFilters = () => {
+    const activeFilters = toJS(this.props.store.activeFilters);
+    const numOfActiveFilters = _.reduce(activeFilters, (result, value) => result + value.length, 0);
+    if (this.map != null && numOfActiveFilters === 0) {
       this.mapLayers.forEach((layer) => {
         this.map.setFilter(layer, null);
       });
-    } else if (activeFilters.length !== 0) {
+    } else if (numOfActiveFilters > 0) {
       const allMapFilters = {};
-      activeFilters.forEach((filterOption) => {
-        if (allMapFilters[filterOption.type] == null) {
-          allMapFilters[filterOption.type] = ['any', ['==', filterOption.type, filterOption.id]];
-        } else {
-          allMapFilters[filterOption.type].push(['==', filterOption.type, filterOption.id]);
-        }
+      _.forEach(activeFilters, (value, key) => {
+        value.forEach((filterOption) => {
+          if (allMapFilters[key] == null) {
+            allMapFilters[key] = ['any', ['==', key, filterOption]];
+          } else {
+            allMapFilters[key].push(['==', key, filterOption]);
+          }
+        });
       });
       const outputFilters = ['all'];
       for (const filter in allMapFilters) {
@@ -69,32 +79,22 @@ export default class Map extends React.Component {
     }
   }
 
-   toggleOtherLayers = (layer) => {
-     this.linesFiltered = true;
-     this.mapLayers.forEach((layerId) => {
-       if (layerId.indexOf(layer) <= -1 && this.map.getLayoutProperty(layerId, 'visibility') === 'visible') {
-         this.map.setLayoutProperty(layerId, 'visibility', 'none');
-       } else if (layerId.indexOf(layer) <= -1 && this.map.getLayoutProperty(layerId, 'visibility') === 'none') {
-         this.map.setLayoutProperty(layerId, 'visibility', 'visible');
-       }
-     });
-   };
+  render() {
+    this.applyFilters();
+    return (
+      <div>
+        <div
+          ref={(el) => {
+            this.mapContainer = el;
+          }
+          }
+          className={styles.map}
+        />
 
-   render() {
-     return (
-       <div>
-         <div
-           ref={(el) => {
-             this.mapContainer = el;
-           }
-           }
-           className={styles.map}
-         />
-
-         <div className={styles.filterContainer}>
-           <PosFilter setFilters={this.applyFilters} />
-         </div>
-       </div >
-     );
-   }
+        <div className={styles.filterContainer}>
+          <PosFilter />
+        </div>
+      </div >
+    );
+  }
 }

@@ -29,14 +29,6 @@
   margin: 0 0.2rem;
 }
 
-.healthFilterChip {
-  color: white;
-  background-color: var(--color-blue-light);
-  font-size: 1.2rem;
-  line-height: 2.4rem;
-  margin-right: 0.8rem;
-}
-
 .chipLabel {
   cursor: pointer;
 }

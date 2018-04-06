@@ -8,10 +8,11 @@ import styles from './posFilter.css';
 
 @inject('store') @observer class PosFilter extends React.Component {
   static propTypes = {
-    setFilters: PropTypes.func.isRequired,
     store: PropTypes.object.isRequired,
   };
 
+  // TODO add optionType for getFilterDisplayName when filter ID is used 
+  // eslint-disable-next-line
   generateFilter(filterType, optionType) {
     return _.map(this.props.store.activeFilters[filterType], id => (
       ({ label: id, id, type: filterType, key: `${filterType}${id}` })
@@ -31,8 +32,6 @@ import styles from './posFilter.css';
       }
     });
 
-    this.props.setFilters(filters);
-
     return (
       <div className={styles.header}>
         <div className={styles.filterHeader}>
@@ -47,10 +46,7 @@ import styles from './posFilter.css';
               className={styles.filterChip}
               theme={{ deleteIcon: styles.chipDeleteIcon, delete: styles.chipDelete }}
               onDeleteClick={() => {
-                // TODO this needs refactoring
                 this.props.store.removeActiveFilter(filter.id, filter.type);
-                _.remove(filters, activeFilter => activeFilter.id === filter.id);
-                this.props.setFilters(filters);
               }}
             >
               <span className={styles.chipLabel} id={`activeFilterLabel${index}`} onClick={this.handleToggle} >

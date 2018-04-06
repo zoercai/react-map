@@ -6,7 +6,6 @@ import FontIcon from 'react-toolbox/lib/font_icon';
 import { observer, inject } from 'mobx-react';
 import PropTypes from 'prop-types';
 import styles from './toolbar.css';
-// import posStyles from '../../styles.scss';
 import FilterData from './FilterData';
 import tripIcon from './tripIcon.png';
 
@@ -70,7 +69,6 @@ class FilterDialogue extends React.Component {
               <IconButton icon="close" className={styles.closeButton} id="closeFilterDialogButton" onClick={this.props.store.closeFilterDialog} ripple={false} />
               <Button label="Clear All" className={cn(styles.button, styles.clearAll)} id="clearFilterDialogButton" onClick={() => this.clearAll()} ripple={false} />
             </div>
-
             <div className={cn(styles.topHeaderContainer, styles.headerContainer)}>
               <img className={styles.icon} src={tripIcon} alt="tripIcon" />
               <p className={styles.header}>Trip</p>
@@ -95,7 +93,6 @@ class FilterDialogue extends React.Component {
     );
 
     return (
-
       <NavDrawer
         active={this.props.store.getFilterDialogActive()}
         onOverlayClick={this.props.store.closeFilterDialog}
