@@ -168,7 +168,6 @@
   border-top-width: 0.1rem;
   border-color: var(--color-grey-lighter);
   margin-top: auto;
-  padding-bottom: 7.2rem;
 }
 
 .clearButton {
@@ -320,6 +319,7 @@
   bottom: 11rem;
   right: 0;
   left: 0;
+  height: 100%;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;

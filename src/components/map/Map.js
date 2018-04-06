@@ -2,7 +2,8 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { toJS } from 'mobx';
+import Switch from 'react-toolbox/lib/switch';
+import { observable, toJS } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import styles from './map.css';
 import PosFilter from './PosFilter';
@@ -19,12 +20,12 @@ export default class Map extends React.Component {
   componentDidMount() {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/satellite-v9',
+      style: 'mapbox://styles/mapbox/dark-v9',
       center: [174.7633, -36.8485],
       zoom: 10,
     });
 
-    this.map.on('load', () => {
+    this.map.on('style.load', () => {
       this.map.addLayer({
         id: 'trips',
         type: 'line',
@@ -44,6 +45,7 @@ export default class Map extends React.Component {
       });
 
       this.mapLayers.push('trips');
+      this.applyFilters();
     });
   }
 
@@ -79,8 +81,19 @@ export default class Map extends React.Component {
     }
   }
 
+  @observable satelliteOn = false;
+
+  // Toggle satellite
+  toggleSatellite = () => {
+    this.satelliteOn = !this.satelliteOn;
+    if (this.satelliteOn) {
+      this.map.setStyle('mapbox://styles/mapbox/satellite-v9');
+    } else {
+      this.map.setStyle('mapbox://styles/mapbox/dark-v9');
+    }
+  }
+
   render() {
-    this.applyFilters();
     return (
       <div>
         <div
@@ -92,8 +105,15 @@ export default class Map extends React.Component {
         />
 
         <div className={styles.filterContainer}>
-          <PosFilter />
+          <PosFilter applyFilters={this.applyFilters} />
         </div>
+
+        <Switch
+          className={styles.satelliteSwitch}
+          checked={this.satelliteOn}
+          label="Satellite"
+          onChange={this.toggleSatellite}
+        />
       </div >
     );
   }

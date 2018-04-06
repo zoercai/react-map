@@ -9,6 +9,7 @@ import styles from './posFilter.css';
 @inject('store') @observer class PosFilter extends React.Component {
   static propTypes = {
     store: PropTypes.object.isRequired,
+    applyFilters: PropTypes.func.isRequired,
   };
 
   // TODO add optionType for getFilterDisplayName when filter ID is used 
@@ -31,6 +32,8 @@ import styles from './posFilter.css';
         filters.push(filter);
       }
     });
+
+    this.props.applyFilters();
 
     return (
       <div className={styles.header}>
