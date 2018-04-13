@@ -21,8 +21,8 @@ export default class Map extends React.Component {
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/dark-v9',
-      center: [174.7633, -36.8485],
-      zoom: 10,
+      center: [174.8860, -40.9006],
+      zoom: 4,
     });
 
     this.map.on('style.load', () => {
@@ -43,13 +43,53 @@ export default class Map extends React.Component {
           'line-width': 1,
         },
       });
-
       this.mapLayers.push('trips');
       this.applyFilters();
     });
+
+    this.map.flyTo({
+      zoom: 4,
+    });
+
+    this.map.on('render', this.afterChangeComplete);
+  }
+
+  afterChangeComplete = () => {
+    if (!this.map.loaded()) {
+      this.map.flyTo({
+        zoom: 4,
+      });
+      return;
+    } // still not loaded; bail out.
+
+    // now that the map is loaded, it's safe to query the features:
+    const filteredSourceFeatures = this.map.querySourceFeatures('trips', { sourceLayer: 'all', filter: this.currentFilters });
+
+    if (filteredSourceFeatures.length > 0) {
+      const firstCoordinate = filteredSourceFeatures[0].geometry.type === 'LineString' ? filteredSourceFeatures[0].geometry.coordinates[0] : filteredSourceFeatures[0].geometry.coordinates[0][0];
+      const bounds = new mapboxgl.LngLatBounds(firstCoordinate, firstCoordinate);
+      filteredSourceFeatures.forEach(feature =>
+        feature.geometry.coordinates.forEach((coordinate) => {
+          if (feature.geometry.type === 'LineString') {
+            bounds.extend(coordinate);
+          } else if (feature.geometry.type === 'MultiLineString') {
+            coordinate.forEach((linestringCoordinate) => {
+              if (linestringCoordinate[0] > 170 && linestringCoordinate[1] < -30) {
+                bounds.extend(linestringCoordinate);
+              }
+            });
+          }
+        },
+        ));
+      this.map.fitBounds(bounds, {
+        padding: 20,
+      });
+      this.map.off('render', this.afterChangeComplete); // remove this handler now that we're done.
+    }
   }
 
   mapLayers = [];
+  currentFilters = null;
 
   applyFilters = () => {
     const activeFilters = toJS(this.props.store.activeFilters);
@@ -78,6 +118,10 @@ export default class Map extends React.Component {
       this.mapLayers.forEach((layer) => {
         this.map.setFilter(layer, outputFilters);
       });
+
+      this.currentFilters = outputFilters;
+
+      this.map.on('render', this.afterChangeComplete);
     }
   }
 
@@ -91,6 +135,8 @@ export default class Map extends React.Component {
     } else {
       this.map.setStyle('mapbox://styles/mapbox/dark-v9');
     }
+
+    this.map.on('render', this.afterChangeComplete);
   }
 
   render() {
